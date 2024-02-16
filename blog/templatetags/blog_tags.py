@@ -5,7 +5,7 @@ register=template.Library()
 
 @register.inclusion_tag("blog/blog_lastes_post.html")
 def lastespost(arg=3):
-    posts=Post.objects.filter(status=1).order_by('published_date')[:arg]
+    posts=Post.objects.filter(status=1).order_by('-published_date')[:arg]
     return {'posts':posts}
 
 @register.inclusion_tag("blog/blog_post_categories.html")

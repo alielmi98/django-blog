@@ -38,7 +38,8 @@
   .owl-carousel .owl-item img {
     display: block;
     width: 100%;
-    -webkit-transform-style: preserve-3d; }
+    -webkit-transform-style: preserve-3d;
+  height: 240px;}
   .owl-carousel .owl-nav.disabled,
   .owl-carousel .owl-dots.disabled {
     display: none; }
