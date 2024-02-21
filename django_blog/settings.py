@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'blog.apps.BlogConfig',
-    'website.apps.WebsiteConfig'
+    'website.apps.WebsiteConfig',
+    'robots'
 ]
 SITE_ID = 2
 
