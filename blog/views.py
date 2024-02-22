@@ -16,6 +16,10 @@ def blog_index_view(request,**kvargs):
     if kvargs.get('author_name') != None:
         posts=posts.filter(author__username=kvargs['author_name'])
 
+    if kvargs.get('tag_name') != None:
+        posts=posts.filter(tags__name__in=[kvargs['tag_name']])
+
+
     posts = Paginator(posts, 4)
     try:
         page_number=request.GET.get('page')
