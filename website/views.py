@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from .models import Contact,NewsLetter
-from .form import ContactForm,NewsLetterForm
+from .forms import ContactForm,NewsLetterForm
 from django.contrib import messages
 
 
@@ -20,7 +20,7 @@ def contact_view(request):
         else:
             messages.add_message(request, messages.ERROR, "Your message was not sent")
 
-    return render(request,"website/contact.html")
+    return render(request,"website/contact.html",{'form': form})
 
 def elements_view(request):
     return render(request,"website/elements.html")
