@@ -48,9 +48,12 @@ INSTALLED_APPS = [
     'taggit',
     'django_summernote',
     'captcha',
+    'accounts.apps.AccountsConfig',
+    'sweetify',
     
 ]
 SITE_ID = 2
+
 
 
 #  multi_captcha_admin Config
@@ -172,6 +175,10 @@ STATICFILES_DIRS = [
     BASE_DIR / "statics",
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'accounts.backends.CustomAuthenticationBackend',
+]
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
@@ -182,3 +189,17 @@ INTERNAL_IPS = [
     "127.0.0.1",
 
 ]
+
+SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
+
+
+#this is for test in console
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+ 
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'ali10elmi@gmail.com'
+EMAIL_HOST_PASSWORD = 'ykbb ntzm mkih wasi'

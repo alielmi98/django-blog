@@ -40,8 +40,13 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6 col-sm-6 col-6 header-top-left">
                         <ul>
-                            <li><a href="#">Visit Us</a></li>
-                            <li><a href="#">Buy Tickets</a></li>
+                            {% if request.user.is_authenticated %}
+                            <li><a href="#">{{request.user.username}}</a></li>
+                            <li><a href="{% url 'accounts:logout'%}">Logout</a></li>
+                            {% else %}
+                            <li><a href="{% url 'accounts:login'%}">Login</a></li>
+                            <li><a href="{% url 'accounts:signup'%}">Signup</a></li>
+                            {% endif %}
                         </ul>
                     </div>
                     <div class="col-lg-6 col-sm-6 col-6 header-top-right">
@@ -185,8 +190,7 @@
     </footer>
     <!-- End footer Area -->
 
-    {% include 'forms_alert.html'%}
-
+ 
     <script src="{% static 'js/vendor/jquery-2.2.4.min.js' %}"></script>
     <script src="{% static 'js/popper.min.js' %}"></script>
     <script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
@@ -202,6 +206,9 @@
     <script src="{% static 'js/owl.carousel.min.js' %}"></script>
     <script src="{% static 'js/mail-script.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    {% load sweetify %}
+    {% sweetify %}
 </body>
 
 </html>

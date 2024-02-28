@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from .models import Contact,NewsLetter
 from .forms import ContactForm,NewsLetterForm
 from django.contrib import messages
-
+import sweetify
 
 def index_view(request):
     return render(request,"website/index.html")
@@ -16,9 +16,9 @@ def contact_view(request):
     if request.method=="POST":
         if form.is_valid():
             form.save()
-            messages.add_message(request, messages.SUCCESS, "Your ticket has been sent.")
+            sweetify.success(request, "Your ticket has been sent.")
         else:
-            messages.add_message(request, messages.ERROR, "Your message was not sent")
+            sweetify.error(request, "Your message was not sent")
 
     return render(request,"website/contact.html",{'form': form})
 
@@ -29,9 +29,9 @@ def newsletter_view(request):
     form=NewsLetterForm(request.POST)
     if form.is_valid():
         form.save()
-        messages.add_message(request, messages.SUCCESS, "Your email has been successfully registered.")
+        sweetify.success(request, "Your email has been successfully registered.")
     else:
-        messages.add_message(request, messages.ERROR, "Your email was not registered. Please try again")
+        sweetify.error(request, "Your email was not registered. Please try again")
         
     return redirect(request.META['HTTP_REFERER'])
 
