@@ -15,3 +15,4 @@ sqlparse==0.4.4
 sweetify==2.3.1
 tzdata==2023.4
 webencodings==0.5.1
+django-compressor==4.4

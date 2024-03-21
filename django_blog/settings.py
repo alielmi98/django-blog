@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'captcha',
     'accounts.apps.AccountsConfig',
     'sweetify',
+    'compressor',
     
 ]
 SITE_ID = 2
@@ -192,6 +193,13 @@ INTERNAL_IPS = [
 
 SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
 
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    # other finders..
+    'compressor.finders.CompressorFinder',
+)
 
 #this is for test in console
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
